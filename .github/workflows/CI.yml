@@ -36,7 +36,7 @@ jobs:
               run: npx --no-install eslint .
 
             - name: Prettier
-              run: npx --no-install prettier --check .
+              run: npx prettier --check "src/**/*.tsx"
 
             - name: Run Production Build
               run: npm run build --if-present
