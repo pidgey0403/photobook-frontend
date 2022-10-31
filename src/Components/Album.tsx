@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AddImage from './AddImage';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -52,7 +53,7 @@ export default function Album() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Add a Memory</Button>
+              <AddImage/>
               {/* <Button variant="outlined">Secondary action</Button> */}
             </Stack>
           </Container>
@@ -82,6 +83,7 @@ export default function Album() {
                   <CardActions>
                     {/* TODO: click on it will show the full details: image + descrip */}
                     <Button size="small">More</Button>
+                    
                     {/* TODO: add delete mutation ONLY if password is correct*/}
                     <Button size="small">Delete</Button>
                   </CardActions>
