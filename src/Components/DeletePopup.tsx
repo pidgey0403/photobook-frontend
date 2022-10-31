@@ -8,13 +8,22 @@ import DialogContentText from '@mui/material/DialogContentText';
 
 export default function DeletePopup() {
   const [open, setOpen] = React.useState(false);
+  const [error, setErr] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleClose = (genre: string) => {
+    const userInput =(document.getElementById('name') as HTMLInputElement).value;
+    if (genre === 'Cancel') setOpen(false);
+    else if (userInput !== '123p'){ //TODO: add password encryption + verification 
+      setErr(true);
+    } else{ //correct password 
+      setOpen(false);
+      //TODO: add graphql mutation to delete image from db + re-render application
+      setTimeout(()=>{setErr(false)},1000);
+    }
   };
 
   return (
@@ -25,7 +34,8 @@ export default function DeletePopup() {
       <Dialog open={open} onClose={handleClose}>
         <DialogContent>
           <DialogContentText>
-            To delete this image, please enter the secure key given to you.
+            {error?`The provided password was incorrect, please try again.`:`To delete this image, please enter the secure key given to you.`
+            }
           </DialogContentText>
           <TextField
             autoFocus
@@ -38,8 +48,8 @@ export default function DeletePopup() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Confirm Delete</Button>
+          <Button onClick={()=>handleClose('Cancel')}>Cancel</Button>
+          <Button onClick={()=>handleClose('Delete')}>Confirm Delete</Button>
         </DialogActions>
       </Dialog>
     </div>

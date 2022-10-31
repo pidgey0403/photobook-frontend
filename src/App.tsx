@@ -4,7 +4,7 @@ import Album from './Components/Album';
 function App() {
   return (
     <div className="App">
-      <Album></Album>
+      <Album/>
     </div>
   );
 }
