@@ -11,7 +11,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import DeletePopup from './DeletePopup';
 
+//TODO: populate with GraphQL query
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme({
@@ -83,13 +85,15 @@ export default function Album() {
                     {/* TODO: click on it will show the full details: image + descrip */}
                     <Button size="small">More</Button>
                     {/* TODO: add delete mutation ONLY if password is correct*/}
-                    <Button size="small">Delete</Button>
+                    <DeletePopup/>
+                    {/* <Button size="small"><DelPopup/></Button> */}
                   </CardActions>
                 </Card>
               </Grid>
             ))}
           </Grid>
         </Container>
+        
       </main>
     </ThemeProvider>
   );
