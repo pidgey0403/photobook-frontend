@@ -1,5 +1,5 @@
 import React from 'react';
-import Album from './Album';
+import Album from './Components/Album';
 
 function App() {
   return (
