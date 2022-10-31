@@ -22,7 +22,7 @@ export default function AddImage() {
         Add a Memory
       </Button>
       {/* TODO: grab textfield data by ID and then populate a graphql mutation to send to database */}
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} >
         <DialogContent>
           <TextField
             autoFocus
