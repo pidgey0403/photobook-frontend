@@ -103,7 +103,7 @@ export default function Album() {
                                         <Button size="small">More</Button>
 
                                         {/* TODO: add delete mutation ONLY if password is correct*/}
-                                        <DeletePopup/>
+                                        <DeletePopup />
                                     </CardActions>
                                 </Card>
                             </Grid>
