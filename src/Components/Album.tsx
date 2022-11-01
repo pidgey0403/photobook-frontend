@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -13,9 +12,10 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import DeletePopup from './DeletePopup';
 import AddImage from './AddImage';
+import More from './More';
+import myJson from '../Temporary Data/database.json';
 
 //TODO: populate with GraphQL query
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme({
     palette: {
@@ -62,15 +62,14 @@ export default function Album() {
                             justifyContent="center"
                         >
                             <AddImage />
-                            {/* <Button variant="outlined">Secondary action</Button> */}
                         </Stack>
                     </Container>
                 </Box>
                 <Container sx={{ py: 8 }} maxWidth="md">
                     {/* End hero unit */}
                     <Grid container spacing={4}>
-                        {cards.map((card) => (
-                            <Grid item key={card} xs={12} sm={6} md={4}>
+                        {myJson.photos.map((card: any) => (
+                            <Grid item key={card.photoID} xs={12} sm={6} md={4}>
                                 <Card
                                     sx={{
                                         height: '100%',
@@ -81,26 +80,23 @@ export default function Album() {
                                 >
                                     <CardMedia
                                         component="img"
-                                        image="https://source.unsplash.com/random"
-                                        alt="random"
+                                        image={card.image}
+                                        alt={card.title}
                                     />
                                     <CardContent sx={{ flexGrow: 1 }}>
-                                        <Typography
-                                            gutterBottom
-                                            variant="h5"
-                                            component="h2"
-                                        >
-                                            Heading
-                                        </Typography>
-                                        <Typography>
-                                            This is a media card. You can use
-                                            this section to describe the
-                                            content.
+                                        <Typography variant="h5" component="h2">
+                                            {card.title}
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         {/* TODO: click on it will show the full details: image + descrip */}
-                                        <Button size="small">More</Button>
+                                        <More
+                                            title={card.title}
+                                            author={card.author}
+                                            date={card.date}
+                                            description={card.description}
+                                            image={card.image}
+                                        />
 
                                         {/* TODO: add delete mutation ONLY if password is correct*/}
                                         <DeletePopup />
