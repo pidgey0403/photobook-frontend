@@ -14,6 +14,7 @@ import DeletePopup from './DeletePopup';
 import AddImage from './AddImage';
 import More from './More';
 import myJson from '../Temporary Data/database.json';
+import Heart from './Heart';
 
 //TODO: populate with GraphQL query
 
@@ -28,7 +29,6 @@ export default function Album() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <main>
-                {/* Hero unit */}
                 <Box
                     sx={{
                         bgcolor: 'background.paper',
@@ -66,7 +66,6 @@ export default function Album() {
                     </Container>
                 </Box>
                 <Container sx={{ py: 8 }} maxWidth="md">
-                    {/* End hero unit */}
                     <Grid container spacing={4}>
                         {myJson.photos.map((card: any) => (
                             <Grid item key={card.photoID} xs={12} sm={6} md={4}>
@@ -100,6 +99,7 @@ export default function Album() {
 
                                         {/* TODO: add delete mutation ONLY if password is correct*/}
                                         <DeletePopup />
+                                        <Heart countLike={card.count} />
                                     </CardActions>
                                 </Card>
                             </Grid>
