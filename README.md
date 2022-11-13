@@ -11,6 +11,7 @@ A short description of the motivation behind the creation and maintenance of the
 ## Build Status
 
 ![](https://github.com/pidgey0403/photobook-frontend/actions/workflows/CI.yml/badge.svg)
+![](https://github.com/pidgey0403/photobook-backend/actions/workflows/ci.yml/badge.svg)
 
 ## Code Style
 
