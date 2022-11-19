@@ -20,9 +20,13 @@ const Showcase: React.FC<ShowcaseProps> = ({
     return (
         <div style={{ padding: 20 }}>
             <img
-                style={{ margin: 'auto', display: 'block' }}
-                src={`${image}?&auto=format`}
-                srcSet={`${image}?w=400&fit=crop&auto=format&dpr=2 2x`}
+                style={{
+                    margin: 'auto',
+                    display: 'block',
+                    maxWidth: '70%',
+                }}
+                src={`${image}`}
+                srcSet={`${image}`}
                 alt={title}
                 loading="lazy"
             />
