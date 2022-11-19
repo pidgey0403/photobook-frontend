@@ -38,6 +38,7 @@ const GET_IMAGES = gql`
 `;
 
 export default function Album() {
+    // run the apollo-client query and set the results into a state
     const { loading, error, data } = useQuery(GET_IMAGES);
     const [imageDict, setImageDict] = React.useState({ images: [] });
 
