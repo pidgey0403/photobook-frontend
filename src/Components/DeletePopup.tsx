@@ -5,12 +5,27 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import { gql, useMutation } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 
 // Define mutation to delete a specified Image
 const DELETE_IMAGE = gql`
     mutation RemoveImage($id: Int!) {
         removeImage(id: $id) {
+            author
+            date
+            description
+            file
+            id
+            likes
+            title
+        }
+    }
+`;
+
+// Write out the query using apollo-client
+const GET_IMAGES = gql`
+    query Images {
+        images {
             author
             date
             description
@@ -29,7 +44,10 @@ export interface DelProps {
 const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
     const [open, setOpen] = React.useState(false);
     const [err, setErr] = React.useState(false);
-    const [deleteImage, { data, loading, error }] = useMutation(DELETE_IMAGE);
+    const { data } = useQuery(GET_IMAGES);
+    const [deleteImage] = useMutation(DELETE_IMAGE, {
+        refetchQueries: ['images'],
+    });
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -39,7 +57,7 @@ const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
         const userInput = (document.getElementById('name') as HTMLInputElement)
             .value;
         if (genre === 'Cancel') setOpen(false);
-        else if (userInput !== process.env.PASSWORD) {
+        else if (userInput !== process.env.REACT_APP_PASSWORD) {
             setErr(true);
         } else {
             // Password was valid
@@ -48,6 +66,11 @@ const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
                 variables: {
                     id: photoID,
                 },
+                refetchQueries: () => [
+                    {
+                        query: GET_IMAGES,
+                    },
+                ],
             });
             setTimeout(() => {
                 setErr(false);
@@ -55,8 +78,8 @@ const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
         }
     };
 
-    if (loading) console.log('Submitting...');
-    if (error) console.log(`Submission error! ${error.message}`);
+    // if (loading) console.log('Submitting...');
+    // if (error) console.log(`Submission error! ${error.message}`);
 
     return (
         <div>
