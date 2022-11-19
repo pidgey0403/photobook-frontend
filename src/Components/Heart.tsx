@@ -54,8 +54,6 @@ const Heart: React.FC<HeartProps> = ({ countLike, photoID }: HeartProps) => {
     if (loading) console.log('Submitting...');
     if (error) console.log(`Submission error! ${error.message}`);
 
-    console.log(data, loading, error);
-
     return (
         <div>
             <Badge

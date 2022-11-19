@@ -135,8 +135,7 @@ export default function Album() {
                                                 image={card.file}
                                             />
 
-                                            {/* TODO: add delete mutation ONLY if password is correct*/}
-                                            <DeletePopup />
+                                            <DeletePopup photoID={card.id} />
                                             <Heart
                                                 countLike={card.likes}
                                                 photoID={card.id}
