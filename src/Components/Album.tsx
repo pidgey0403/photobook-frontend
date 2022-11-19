@@ -137,7 +137,10 @@ export default function Album() {
 
                                             {/* TODO: add delete mutation ONLY if password is correct*/}
                                             <DeletePopup />
-                                            <Heart countLike={card.likes} />
+                                            <Heart
+                                                countLike={card.likes}
+                                                photoID={card.id}
+                                            />
                                         </CardActions>
                                     </Card>
                                 </Grid>
