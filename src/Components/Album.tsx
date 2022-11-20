@@ -18,7 +18,7 @@ import { useQuery, gql } from '@apollo/client';
 
 const theme = createTheme({
     palette: {
-        mode: 'dark',
+        mode: 'light',
     },
 });
 
