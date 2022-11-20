@@ -61,7 +61,9 @@ const Heart: React.FC<HeartProps> = ({ countLike, photoID }: HeartProps) => {
                 badgeContent={count}
                 onClick={() => handleBadgeNum()}
             >
-                <FavoriteIcon sx={{ color: '#8b0000' }} />
+                <FavoriteIcon
+                    sx={{ color: '#ad0202', '&:hover': { color: '#8b0000' } }}
+                />
             </Badge>
         </div>
     );
