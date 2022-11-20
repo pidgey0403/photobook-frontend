@@ -6,7 +6,17 @@ Check it out ![here]()
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain why the project exists.
+Photobook was built to share your favourite memories with close friends and family, on a centralized, easy-to-use website. Physical albums are great for storing large collections of family photos, but can easily get cumbersome and tedious to carry around. With Photobook it is easy to store and share your favourite photos and celebrate those special moments with your loved ones, or even just something cool you enjoyed!
+
+## Running the App Locally
+Run the command:
+
+```bash
+$ pnpm start:dev
+
+```
+This should run the App in development mode and expose port 3000. Visit `http://localhost:3000/` to start playing with the App locally.
+
 
 ## Build Status
 
@@ -15,7 +25,9 @@ A short description of the motivation behind the creation and maintenance of the
 
 ## Code Style
 
-If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
+<a href="https://prettier.io/"><img src="https://img.shields.io/badge/formatter-prettier-blue.svg"></a>
+<a href="https://eslint.org/"><img src="https://img.shields.io/badge/linter-eslint-blue.svg"></a>
+
 
 ## Frameworks & Languages
 
