@@ -83,7 +83,6 @@ export default function Album() {
                             2022.
                         </Typography>
                         <Stack
-                            sx={{ pt: 4 }}
                             direction="row"
                             spacing={2}
                             justifyContent="center"
@@ -92,7 +91,7 @@ export default function Album() {
                         </Stack>
                     </Container>
                 </Box>
-                <Container sx={{ py: 8 }} maxWidth="md">
+                <Container maxWidth="md">
                     <Grid container spacing={4}>
                         {imageDict.images.map(
                             (card: {
