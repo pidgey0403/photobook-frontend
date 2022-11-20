@@ -78,9 +78,6 @@ const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
         }
     };
 
-    // if (loading) console.log('Submitting...');
-    // if (error) console.log(`Submission error! ${error.message}`);
-
     return (
         <div>
             <Button onClick={handleClickOpen}>Delete</Button>
