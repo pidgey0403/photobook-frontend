@@ -53,20 +53,19 @@ const Heart: React.FC<HeartProps> = ({ countLike, photoID }: HeartProps) => {
     if (error) console.log(`Submission error! ${error.message}`);
 
     return (
-        <div>
-            <Badge
-                color="primary"
-                badgeContent={count}
-                onClick={() => handleBadgeNum()}
-            >
-                <FavoriteIcon
-                    sx={{
-                        color: '#ad0202',
-                        '&:hover': { color: '#8b0000' },
-                    }}
-                />
-            </Badge>
-        </div>
+        <Badge
+            color="primary"
+            badgeContent={count}
+            data-testid="count"
+            onClick={() => handleBadgeNum()}
+        >
+            <FavoriteIcon
+                sx={{
+                    color: '#ad0202',
+                    '&:hover': { color: '#8b0000' },
+                }}
+            />
+        </Badge>
     );
 };
 

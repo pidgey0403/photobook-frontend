@@ -30,7 +30,11 @@ const DeletePopup: React.FC<DeleteProps> = ({
 
     return (
         <div>
-            <Button onClick={handleClickOpen} sx={{ color: '#000000' }}>
+            <Button
+                onClick={handleClickOpen}
+                sx={{ color: '#000000' }}
+                data-testid="view"
+            >
                 View More
             </Button>
             <Dialog open={open} onClose={handleClose}>

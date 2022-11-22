@@ -2,12 +2,11 @@
 
 import { render } from '@testing-library/react';
 import React from 'react';
-import AddImage from '../Components/AddImage';
+import Album from '../Components/Album';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 // render the entire component
-test('renders AddImage component test', () => {
-    // Connect to backend using ApolloClient to be able to render the tests
+test('renders Album component test', () => {
     const client = new ApolloClient({
         uri: 'https://photobook-be.herokuapp.com/graphql',
         cache: new InMemoryCache(),
@@ -15,7 +14,7 @@ test('renders AddImage component test', () => {
 
     render(
         <ApolloProvider client={client}>
-            <AddImage />
+            <Album />
         </ApolloProvider>,
     );
 });
