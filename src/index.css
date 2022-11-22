@@ -7,7 +7,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +23,6 @@ body {
     text-shadow: 2px 2px #000000;   
 }
 
-
 .container{
     min-height: 100vh;
     width: 100%;
@@ -35,8 +33,6 @@ body {
     margin: auto;
 }
 
-
-
 .container::before {
     content: "";
     position: absolute;
@@ -44,5 +40,4 @@ body {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    /* backdrop-filter: blur(10px); */
 }

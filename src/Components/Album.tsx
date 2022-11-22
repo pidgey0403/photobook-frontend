@@ -17,13 +17,14 @@ import Heart from './Heart';
 import { useQuery, gql } from '@apollo/client';
 import Loading from './Loading';
 
+// Generate MUI theme
 const theme = createTheme({
     palette: {
         mode: 'light',
     },
 });
 
-// Write out the query using apollo-client
+// GET_IMAGES query to fetch a list of all images
 const GET_IMAGES = gql`
     query Images {
         images {
@@ -39,11 +40,13 @@ const GET_IMAGES = gql`
 `;
 
 export default function Album() {
-    // run the apollo-client query and set the results into a state
+    // run the GET_IMAGES query and set the results into a state
     const { loading, error, data } = useQuery(GET_IMAGES);
+    // state for holding all retrived images
     const [imageDict, setImageDict] = React.useState({ images: [] });
 
     React.useEffect(() => {
+        // If query successfully completed
         if (loading === false && data) {
             setImageDict(data);
         }
@@ -101,6 +104,7 @@ export default function Album() {
                     </Box>
                     <Container maxWidth="md">
                         <Grid container spacing={4}>
+                            {/* Map over the array of images returned from query and populate each Card with the fetched fields */}
                             {imageDict.images.map(
                                 (card: {
                                     author: string;

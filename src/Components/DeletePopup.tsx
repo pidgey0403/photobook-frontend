@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { gql, useMutation } from '@apollo/client';
 
-// Define mutation to delete a specified Image
+// DELETE_IMAGE mutation to delete a specified Image
 const DELETE_IMAGE = gql`
     mutation RemoveImage($id: Int!) {
         removeImage(id: $id) {
@@ -22,7 +22,7 @@ const DELETE_IMAGE = gql`
     }
 `;
 
-// Write out the query using apollo-client
+// GET_IMAGES query to fetch a list of all images
 const GET_IMAGES = gql`
     query Images {
         images {
@@ -37,30 +37,40 @@ const GET_IMAGES = gql`
     }
 `;
 
+// Props interface for DeletePopup component
 export interface DelProps {
     photoID: number;
 }
 
 const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
-    const [open, setOpen] = React.useState(false);
-    const [err, setErr] = React.useState(false);
+    const [open, setOpen] = React.useState(false); // control display of component
+    const [passwordError, setPassErr] = React.useState(false); // password validation state
+
+    // state to hold promise returned by DELETE_IMAGE mutation + refetch list of images
     const [deleteImage] = useMutation(DELETE_IMAGE, {
         refetchQueries: ['images'],
     });
 
+    // Open component
     const handleClickOpen = () => {
         setOpen(true);
     };
 
+    // Close component and prompt user
     const handleClose = (genre: string) => {
-        const userInput = (document.getElementById('name') as HTMLInputElement)
-            .value;
+        // get user input for password key
+        const userInput = (
+            document.getElementById('passKey') as HTMLInputElement
+        ).value;
+        // If we select cancel button always close component
         if (genre === 'Cancel') setOpen(false);
+        // display error prompt if password key was incorrect
         else if (userInput !== process.env.REACT_APP_PASSWORD) {
-            setErr(true);
+            setPassErr(true);
         } else {
             // Password was valid
             setOpen(false);
+            // Call delete image mutation and refetch list of images
             deleteImage({
                 variables: {
                     id: photoID,
@@ -72,7 +82,7 @@ const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
                 ],
             });
             setTimeout(() => {
-                setErr(false);
+                setPassErr(false);
             }, 1000);
         }
     };
@@ -85,14 +95,14 @@ const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
                     <DialogContentText>
-                        {err
+                        {passwordError
                             ? `The provided password was incorrect, please try again.`
                             : `To delete this image, please enter the secure key given to you.`}
                     </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="name"
+                        id="passKey"
                         label="Admin key"
                         type="text"
                         fullWidth
