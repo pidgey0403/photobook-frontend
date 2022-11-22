@@ -26,8 +26,7 @@ const INCREMENT_LIKES = gql`
 const Heart: React.FC<HeartProps> = ({ countLike, photoID }: HeartProps) => {
     const [count, setCount] = React.useState(countLike);
     const [active, setActive] = React.useState(true);
-    const [increaseLikes, { data, loading, error, reset }] =
-        useMutation(INCREMENT_LIKES);
+    const [increaseLikes, { error, reset }] = useMutation(INCREMENT_LIKES);
 
     const handleBadgeNum = () => {
         setActive(!active);
@@ -51,7 +50,6 @@ const Heart: React.FC<HeartProps> = ({ countLike, photoID }: HeartProps) => {
         }
     };
 
-    if (loading) console.log('Submitting...');
     if (error) console.log(`Submission error! ${error.message}`);
 
     return (
@@ -62,7 +60,10 @@ const Heart: React.FC<HeartProps> = ({ countLike, photoID }: HeartProps) => {
                 onClick={() => handleBadgeNum()}
             >
                 <FavoriteIcon
-                    sx={{ color: '#ad0202', '&:hover': { color: '#8b0000' } }}
+                    sx={{
+                        color: '#ad0202',
+                        '&:hover': { color: '#8b0000' },
+                    }}
                 />
             </Badge>
         </div>

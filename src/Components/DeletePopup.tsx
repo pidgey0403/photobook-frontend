@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 // Define mutation to delete a specified Image
 const DELETE_IMAGE = gql`
@@ -44,7 +44,6 @@ export interface DelProps {
 const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
     const [open, setOpen] = React.useState(false);
     const [err, setErr] = React.useState(false);
-    const { data } = useQuery(GET_IMAGES);
     const [deleteImage] = useMutation(DELETE_IMAGE, {
         refetchQueries: ['images'],
     });
@@ -80,7 +79,9 @@ const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
 
     return (
         <div>
-            <Button onClick={handleClickOpen}>Delete</Button>
+            <Button onClick={handleClickOpen} sx={{ color: '#000000' }}>
+                Delete
+            </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogContent>
                     <DialogContentText>
@@ -99,10 +100,16 @@ const DeletePopup: React.FC<DelProps> = ({ photoID }: DelProps) => {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => handleClose('Cancel')}>
+                    <Button
+                        sx={{ color: '#000000' }}
+                        onClick={() => handleClose('Cancel')}
+                    >
                         Cancel
                     </Button>
-                    <Button onClick={() => handleClose('Delete')}>
+                    <Button
+                        sx={{ color: '#000000' }}
+                        onClick={() => handleClose('Delete')}
+                    >
                         Confirm Delete
                     </Button>
                 </DialogActions>
