@@ -29,13 +29,8 @@ const Heart: React.FC<HeartProps> = ({ countLike, photoID }: HeartProps) => {
     const [count, setCount] = React.useState(countLike);
     // state to toggle the like count of an image
     const [active, setActive] = React.useState(true);
-<<<<<<< HEAD
-    const [increaseLikes, { loading, error, reset }] =
-        useMutation(INCREMENT_LIKES);
-=======
     // state to hold promise returned by INCREMENT_LIKES mutation
     const [increaseLikes, { error, reset }] = useMutation(INCREMENT_LIKES);
->>>>>>> d8d7c004e7525010599665d44d88767a462766f9
 
     // function to toggle likes a photo receives by 1 or -1
     const handleBadgeNum = () => {
