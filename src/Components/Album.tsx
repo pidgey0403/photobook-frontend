@@ -75,6 +75,7 @@ export default function Album() {
                                 component="h1"
                                 variant="h2"
                                 align="center"
+                                fontWeight="bold"
                                 color="#eef4ed"
                                 gutterBottom
                             >

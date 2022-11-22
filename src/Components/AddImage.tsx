@@ -115,9 +115,12 @@ export default function AddImage() {
                 variant="outlined"
                 onClick={handleClickOpen}
                 sx={{
-                    color: '#eef4ed',
-                    border: 'none',
-                    '&:hover': { border: 'none' },
+                    color: '#ffffff',
+                    borderColor: '#7f5539',
+                    '&:hover': {
+                        borderColor: '#7f5539',
+                        backgroundColor: '#7f5539',
+                    },
                 }}
             >
                 Add a Memory
