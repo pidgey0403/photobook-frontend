@@ -2,6 +2,7 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import { Link } from '@mui/material';
 
+// Props for Showcase component
 export interface ShowcaseProps {
     title: string;
     author: string;
@@ -18,6 +19,7 @@ const Showcase: React.FC<ShowcaseProps> = ({
     image = '',
 }: ShowcaseProps) => {
     return (
+        // Formatting individual Image information passed down from More component
         <div style={{ padding: 20 }}>
             <img
                 style={{

@@ -7,7 +7,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import { gql, useMutation } from '@apollo/client';
 
-// Write out the query using apollo-client
+// ADD_IMAGE mutation to create a new image
 const ADD_IMAGE = gql`
     mutation Mutation($createImageInput: CreateImageInput!) {
         createImage(createImageInput: $createImageInput) {
@@ -22,7 +22,7 @@ const ADD_IMAGE = gql`
     }
 `;
 
-// Write out the query using apollo-client
+// GET_IMAGES query to fetch a list of all images
 const GET_IMAGES = gql`
     query Images {
         images {
@@ -38,7 +38,9 @@ const GET_IMAGES = gql`
 `;
 
 export default function AddImage() {
+    // control component display
     const [open, setOpen] = React.useState(false);
+
     // states to store user inputted data
     const [title, setTitle] = React.useState('');
     const [date, setDate] = React.useState('');
@@ -51,14 +53,7 @@ export default function AddImage() {
         refetchQueries: ['images'],
     });
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
+    // function to send mutation using apollo-client and refetch image query
     const sendData = () => {
         if (title && date && author && description && file) {
             createImage({
@@ -78,6 +73,7 @@ export default function AddImage() {
                 ],
             });
         }
+        // Reset user input states to empty
         setTitle('');
         setDate('');
         setAuthor('');
@@ -85,7 +81,7 @@ export default function AddImage() {
         setFile('');
     };
 
-    // Process the inputted file and convert it to Base64 string
+    // Function to get image file and call convertBase64 helper
     const handleFileRead = async (event: any) => {
         const file = event.target.files[0];
         console.log(typeof file);
@@ -94,7 +90,7 @@ export default function AddImage() {
         setFile(base64 as string);
     };
 
-    // Convert the inputted file into Base64 String
+    // Function to convert inputted img file into Base64 String
     const convertBase64 = (file: any) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
@@ -111,9 +107,12 @@ export default function AddImage() {
 
     return (
         <div>
+            {/* Open popup component */}
             <Button
                 variant="outlined"
-                onClick={handleClickOpen}
+                onClick={() => {
+                    setOpen(true);
+                }}
                 sx={{
                     color: '#ffffff',
                     borderColor: '#7f5539',
@@ -125,7 +124,13 @@ export default function AddImage() {
             >
                 Add a Memory
             </Button>
-            <Dialog open={open} onClose={handleClose}>
+            <Dialog
+                open={open}
+                onClose={() => {
+                    setOpen(false);
+                }}
+            >
+                {/* Get user inputted information */}
                 <DialogContent>
                     <TextField
                         autoFocus
@@ -135,6 +140,7 @@ export default function AddImage() {
                         type="text"
                         fullWidth
                         value={title}
+                        // Capture user inputted information as soon as field changes
                         onChange={(event) => {
                             setTitle(event.target.value);
                         }}
@@ -190,10 +196,18 @@ export default function AddImage() {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
+                    {/* Close component window */}
                     <Button
                         onClick={() => {
-                            handleClose();
+                            setOpen(false);
+                        }}
+                    >
+                        Cancel
+                    </Button>
+                    {/* Submit component window */}
+                    <Button
+                        onClick={() => {
+                            setOpen(false);
                             sendData();
                         }}
                     >
