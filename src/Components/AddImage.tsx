@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -87,6 +88,7 @@ export default function AddImage() {
     // Process the inputted file and convert it to Base64 string
     const handleFileRead = async (event: any) => {
         const file = event.target.files[0];
+        console.log(typeof file);
         const base64 = await convertBase64(file);
         console.log(base64);
         setFile(base64 as string);
@@ -109,7 +111,15 @@ export default function AddImage() {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button
+                variant="outlined"
+                onClick={handleClickOpen}
+                sx={{
+                    color: '#eef4ed',
+                    border: 'none',
+                    '&:hover': { border: 'none' },
+                }}
+            >
                 Add a Memory
             </Button>
             <Dialog open={open} onClose={handleClose}>
