@@ -6,6 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import { gql, useMutation } from '@apollo/client';
+import {} from 'dotenv/config';
 
 // DELETE_IMAGE mutation to delete a specified Image
 const DELETE_IMAGE = gql`
