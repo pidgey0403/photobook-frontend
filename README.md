@@ -2,7 +2,7 @@
 
 Photobook is a collaborative online photo album containing our most unforgettable memories of 2022. Designed to be a throwback of our best moments, think of Photobook as a ![Spotify Wrapped](https://www.spotify.com/ca-en/wrapped/) for photographic captures throughout the year!
 
-Note: Click [here](https://photobook-fe.herokuapp.com/) to check out the full-stack application (please note it might take a minute or two to load up). If you want to just explore the GraphQL backend service, visit [here](https://photobook-be.herokuapp.com/)!
+Note: Click [here](https://photobook.herokuapp.com/) to check out the full-stack application (please note it might take a minute or two to load up). If you want to just explore the GraphQL backend service, visit [here](https://photobook-be.herokuapp.com/)!
 
 ## Motivation
 
