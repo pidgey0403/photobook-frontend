@@ -12,7 +12,7 @@ Photobook was built to share your favourite memories with close friends and fami
 Run the command:
 
 ```bash
-$ pnpm start:dev
+$ npm start
 
 ```
 This should run the App in development mode and expose port 3000. Visit `http://localhost:3000/` to start playing with the App locally.
