@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { Button, Link } from '@mui/material';
 
 // Props for Showcase component
 export interface ShowcaseProps {
@@ -45,19 +44,8 @@ const Showcase: React.FC<ShowcaseProps> = ({
                 <div data-testid="descrip">
                     Description: {description} <br />
                 </div>
-                <a
-                    onClick={() => {
-                        const iframe =
-                            "<iframe width='100%' style='border:none;' height='100%' src='" +
-                            image +
-                            "'==></iframe>";
-                        const x = window.open();
-                        x?.document.open();
-                        x?.document.write(iframe);
-                        x?.document.close();
-                    }}
-                >
-                    Full Resolution
+                <a download={title} href={image}>
+                    Download image
                 </a>
             </Typography>
         </div>
