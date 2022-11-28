@@ -64,7 +64,6 @@ export default function Album() {
                 <main
                     style={{
                         backgroundColor: '#9c6644',
-                        paddingBottom: '10%',
                     }}
                 >
                     <Box
