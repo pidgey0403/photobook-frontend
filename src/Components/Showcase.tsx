@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { Link } from '@mui/material';
 
 // Props for Showcase component
 export interface ShowcaseProps {
@@ -45,9 +44,9 @@ const Showcase: React.FC<ShowcaseProps> = ({
                 <div data-testid="descrip">
                     Description: {description} <br />
                 </div>
-                <Link href={image} underline="none">
-                    {'Full resolution'}
-                </Link>
+                <a download={title} href={image}>
+                    Download image
+                </a>
             </Typography>
         </div>
     );
