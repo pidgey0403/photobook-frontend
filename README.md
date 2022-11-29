@@ -4,6 +4,8 @@ Photobook is a collaborative online photo album containing our most unforgettabl
 
 Note: Click [here](https://photobook.herokuapp.com/) to check out the full-stack application (please note it might take a minute or two to load up). If you want to just explore the GraphQL backend service, visit [here](https://photobook-be.herokuapp.com/)!
 
+**For the MLH Fellowship Admissions team:** please visit [here](https://github.com/pidgey0403/photobook-backend) to also view the Photobook-backend repository!
+
 ## Motivation
 
 Photobook was built to share your favourite memories with close friends and family, on a centralized, easy-to-use website. Physical albums are great for storing large collections of family photos, but can easily get cumbersome and tedious to carry around. With Photobook it is easy to store and share your favourite photos and celebrate those special moments with your loved ones, or even just something cool you enjoyed!
