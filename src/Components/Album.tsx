@@ -89,7 +89,7 @@ export default function Album() {
                                 color="#eef4ed"
                                 paragraph
                             >
-                                A collection of your most memorable moments from
+                                A collection of our most memorable moments from
                                 2022.
                             </Typography>
                             <Stack
